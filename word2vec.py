@@ -3,7 +3,7 @@ from gensim.models import Word2Vec
 def main():
     with open("/home/jschmolzi/txtFiles/1987.txt","r") as file:
         for i in range(10):
-            sentences = file.readline().split('.')
+            sentences = file.readline().strip().split('.')
             print(sentences)
             for sentence in sentences:
                 print(sentence.split())
