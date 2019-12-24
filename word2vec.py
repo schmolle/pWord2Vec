@@ -6,8 +6,7 @@ def main():
             sentences = file.readline().split('.')
             print(sentences)
             for sentence in sentences:
-                sentence = sentence.split(' ')
-            print(sentences)
+                print(sentence.split())
     
 def train_model(name):
     print("Starting : " + name)
