@@ -3,7 +3,11 @@ from gensim.models import Word2Vec
 def main():
     with open("/home/jschmolzi/txtFiles/1987.txt","r") as file:
         for i in range(10):
-            print(file.readline().split('.').split(' '))
+            sentences = file.readline().split('.')
+            print(sentences)
+            for sentence in sentences:
+                sentence.split(' ')
+            print(sentences)
     
 def train_model(name):
     print("Starting : " + name)
