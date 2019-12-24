@@ -1,9 +1,9 @@
 from gensim.models import Word2Vec
 
 def main():
-    file = open("/home/jschmolzi/txtFiles/1987.txt","r")
-    for i in range(3):
-        print(file.readlines())
+    with open("/home/jschmolzi/txtFiles/1987.txt","r") as file:
+        print(file.readline())
+        print(file.readlines()).splitlines()
     
 def train_model(name):
     print("Starting : " + name)
