@@ -1,11 +1,13 @@
 from gensim.models import Word2Vec
 
 def main():
+    model = Word2Vec(size=100, window=5, min_count=1, workers=4)
     with open("/home/jschmolzi/txtFiles/1987.txt","r") as file:
-        for i in range(10):
-            sentences = file.readline().strip().split('.')
+        for line in enumerate(file):
+            sentences = line.strip().split('.')
             print(sentences)
             for sentence in sentences:
+                # model.train(sentence.split(),epochs=1)
                 print(sentence.split())
     
 def train_model(name):
