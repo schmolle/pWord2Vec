@@ -3,9 +3,9 @@ from gensim.test.utils import get_tmpfile
 
 def main():
     path = get_tmpfile("/home/jschmolzi/pModels/1987.model")
+    all_sentences=[]
     with open("/home/jschmolzi/txtFiles/1987.txt","r") as file:
         line = file.readline()
-        all_sentences=[]
         while line:
             sentences = line.strip().split('.')
             print(sentences)
