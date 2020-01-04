@@ -10,7 +10,7 @@ def main():
             sentences = line.strip().split('.')
             print(sentences)
             for sentence in sentences:
-                model.build_vocab(sentence.split())
+                model.build_vocab(sentence.split(),update=True)
                 model.train(sentence.split(),total_examples=1,epochs=1)
             line = file.readline()
     model.save("/home/jschmolzi/pModels/1987.model")
