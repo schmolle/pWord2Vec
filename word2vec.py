@@ -10,7 +10,7 @@ def main():
             for sentence in sentences:
                 # model.train(sentence.split(),epochs=1)
                 print(sentence.split())
-            line = fp.readline()
+            line = file.readline()
 
 def train_model(name):
     print("Starting : " + name)
