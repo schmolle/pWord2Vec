@@ -12,6 +12,9 @@ def main():
             for sentence in sentences:
                 all_sentences.append(sentence.split())
             line = file.readline()
-    model.train(all_sentences)        
+    model.train(all_sentences)
+    path = get_tmpfile("/home/jschmolzi/pModels/2007.model")
+    model.save("/home/jschmolzi/pModels/2007.model")
+                       
 if __name__ == '__main__':
     main()
