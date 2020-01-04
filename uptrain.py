@@ -12,7 +12,7 @@ def main():
             for sentence in sentences:
                 all_sentences.append(sentence.split())
             line = file.readline()
-    model.train(all_sentences,total_examples=1)
+    model.train(all_sentences,total_examples=1,epochs=1)
     path = get_tmpfile("/home/jschmolzi/pModels/2007.model")
     model.save("/home/jschmolzi/pModels/2007.model")
                        
