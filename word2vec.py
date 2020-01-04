@@ -1,4 +1,5 @@
 from gensim.models import Word2Vec
+from gensim.test.utils import get_tmpfile
 
 def main():
     path = get_tmpfile("/home/jschmolzi/pModels/1987.model")
