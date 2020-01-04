@@ -2,7 +2,7 @@ from gensim.models import Word2Vec
 from gensim.test.utils import get_tmpfile
 
 def main():
-    model1987 = Word2Vec.load("/home/jschmolzi/pModels/1987.model")
+    model = Word2Vec.load("/home/jschmolzi/pModels/1987.model")
     all_sentences=[]
     with open("/home/jschmolzi/txtFiles/2007.txt","r") as file:
         line = file.readline()
