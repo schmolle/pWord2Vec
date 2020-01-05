@@ -2,7 +2,9 @@ from gensim.models import Word2Vec
 from gensim.test.utils import get_tmpfile
 
 def main():
+    print("training 1987 ....")
     train_model("1987")
+    print("training 2007 ....")
     train_model("2007")
     
 def train_model(name):
@@ -12,7 +14,6 @@ def train_model(name):
         line = file.readline()
         while line:
             sentences = line.strip().split('.')
-            print(sentences)
             for sentence in sentences:
                 all_sentences.append(sentence.split())
             line = file.readline()

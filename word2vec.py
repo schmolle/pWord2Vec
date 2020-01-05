@@ -8,7 +8,6 @@ def main():
         line = file.readline()
         while line:
             sentences = line.strip().split('.')
-            print(sentences)
             for sentence in sentences:
                 all_sentences.append(sentence.split())
             line = file.readline()
