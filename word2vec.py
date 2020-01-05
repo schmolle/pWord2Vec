@@ -1,7 +1,9 @@
 from gensim.models import Word2Vec
 from gensim.test.utils import get_tmpfile
+import logging
 
 def main():
+    logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
     path = get_tmpfile("/home/jschmolzi/pModels/all.model")
     all_sentences=[]
     with open("/home/jschmolzi/txtFiles/all.txt","r") as file:
