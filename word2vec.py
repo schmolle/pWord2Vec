@@ -16,6 +16,7 @@ def main():
                 for sentence in sentences:
                     all_sentences.append(sentence.split())
         model.build_vocab(all_sentences,update=True)
+        all_sentences=[]
     print("TRAINING")
     for i in range(1987,2008):
         with open("/home/jschmolzi/txtFiles/"+i+".txt","r") as file:
@@ -25,6 +26,7 @@ def main():
                 for sentence in sentences:
                     all_sentences.append(sentence.split())
         model.train(all_sentences)
+        all_sentences=[]
     model.save("/home/jschmolzi/pModels/all.model")
     
 if __name__ == '__main__':
