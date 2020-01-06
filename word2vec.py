@@ -8,7 +8,15 @@ def main():
     all_sentences=[]
     model = Word2Vec(size=100, window=5, min_count=5, workers=4)
     print("VOCAB BUILDING")
-    for i in range(1987,2008):
+    with open("/home/jschmolzi/txtFiles/1987.txt","r") as file:
+            print("start reading file : 1987")
+            for line in file:
+                sentences = line.strip().split('.')
+                for sentence in sentences:
+                    all_sentences.append(sentence.split())
+    model.build_vocab(all_sentences,update)
+    all_sentences=[]
+    for i in range(1988,2008):
         with open("/home/jschmolzi/txtFiles/"+str(i)+".txt","r") as file:
             print("start reading file : "+str(i))
             for line in file:
