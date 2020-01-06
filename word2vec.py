@@ -14,7 +14,7 @@ def main():
                 sentences = line.strip().split('.')
                 for sentence in sentences:
                     all_sentences.append(sentence.split())
-    model.build_vocab(all_sentences,update)
+    model.build_vocab(all_sentences)
     all_sentences=[]
     for i in range(1988,2008):
         with open("/home/jschmolzi/txtFiles/"+str(i)+".txt","r") as file:
