@@ -8,6 +8,7 @@ def main():
     all_sentences=[]
     print("prepare data")
     with open("/home/jschmolzi/txtFiles/all.txt","r") as file:
+        print("start reading file")
         for line in file:
             sentences = line.strip().split('.')
             for sentence in sentences:
