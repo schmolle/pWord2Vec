@@ -33,7 +33,7 @@ def main():
                 sentences = line.strip().split('.')
                 for sentence in sentences:
                     all_sentences.append(sentence.split())
-        model.train(all_sentences)
+        model.train(all_sentences,total_examples=len(all_sentences),epochs=model.epochs)
         all_sentences=[]
     model.save("/home/jschmolzi/pModels/all.model")
     
