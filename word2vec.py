@@ -9,8 +9,8 @@ def main():
     model = Word2Vec(size=100, window=5, min_count=5, workers=4)
     print("VOCAB BUILDING")
     for i in range(1987,2008):
-        with open("/home/jschmolzi/txtFiles/"+i+".txt","r") as file:
-            print("start reading file : "+i)
+        with open("/home/jschmolzi/txtFiles/"+str(i)+".txt","r") as file:
+            print("start reading file : "+str(i))
             for line in file:
                 sentences = line.strip().split('.')
                 for sentence in sentences:
@@ -19,8 +19,8 @@ def main():
         all_sentences=[]
     print("TRAINING")
     for i in range(1987,2008):
-        with open("/home/jschmolzi/txtFiles/"+i+".txt","r") as file:
-            print("start reading file : "+i)
+        with open("/home/jschmolzi/txtFiles/"+str(i)+".txt","r") as file:
+            print("start reading file : "+str(i))
             for line in file:
                 sentences = line.strip().split('.')
                 for sentence in sentences:
