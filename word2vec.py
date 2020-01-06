@@ -6,13 +6,13 @@ def main():
     logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
     path = get_tmpfile("/home/jschmolzi/pModels/all.model")
     all_sentences=[]
+    print("prepare data")
     with open("/home/jschmolzi/txtFiles/all.txt","r") as file:
-        line = file.readline()
-        while line:
+        for line in file:
             sentences = line.strip().split('.')
             for sentence in sentences:
                 all_sentences.append(sentence.split())
-            line = file.readline()
+    print("data ready")
     model = Word2Vec(all_sentences,size=100, window=5, min_count=1, workers=4)
     model.save("/home/jschmolzi/pModels/all.model")
     
