@@ -1,6 +1,6 @@
+import logging
 from gensim.models import Word2Vec
 from gensim.test.utils import get_tmpfile
-import logging
 
 def main():
     logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
