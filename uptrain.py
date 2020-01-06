@@ -1,3 +1,4 @@
+import logging
 from gensim.models import Word2Vec
 from gensim.test.utils import get_tmpfile
 
@@ -8,6 +9,7 @@ def main():
     train_model("2007")
     
 def train_model(name):
+    logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
     model = Word2Vec.load("/home/jschmolzi/pModels/all.model")
     all_sentences=[]
     with open("/home/jschmolzi/txtFiles/"+name+".txt","r") as file:
