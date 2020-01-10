@@ -11,7 +11,8 @@ def main():
     with open("/home/jschmolzi/txtFiles/1987.txt","r") as file:
             print("start reading file : 1987")
             for line in file:
-                sentences = line.strip().split('.')
+                line = line.lower().remove('\'')
+                sentences = line.strip().split('. |! |? |- |; ')
                 for sentence in sentences:
                     all_sentences.append(sentence.split())
     model.build_vocab(all_sentences)
