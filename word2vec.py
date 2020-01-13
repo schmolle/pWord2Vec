@@ -11,7 +11,7 @@ def main():
     with open("/home/jschmolzi/txtFiles/1987.txt","r") as file:
             print("start reading file : 1987")
             for line in file:
-                line = line.lower().replace("","")
+                line = line.lower().replace(",","")
                 sentences = line.strip().split('. |! |? |- |; ')
                 for sentence in sentences:
                     all_sentences.append(sentence.split())

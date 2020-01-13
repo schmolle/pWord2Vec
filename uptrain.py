@@ -13,9 +13,9 @@ def train_model(name):
     model = Word2Vec.load("/home/jschmolzi/pModels/all.model")
     all_sentences=[]
     with open("/home/jschmolzi/txtFiles/"+name+".txt","r") as file:
-        line = file.readline()
+        line = line.lower().replace(",","")
         while line:
-            sentences = line.strip().split('.')
+            sentences = line.strip().split('. |! |? |- |; ')
             for sentence in sentences:
                 all_sentences.append(sentence.split())
             line = file.readline()
