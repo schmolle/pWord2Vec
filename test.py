@@ -10,7 +10,7 @@ def main():
         result2007 = model2007.most_similar(positive=[word],topn=20)
         i=0
         for r1,r2 in zip(result1987,result2007):
-            print("{} :  {}  |  {}".format(i,r1,r2))
+            print("{0:2d} :  {1:30d}  |  {2:30d}".format(i,r1,r2))
             i = i+1
             
 if __name__ == '__main__':
