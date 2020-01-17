@@ -14,7 +14,8 @@ def train_model(name):
     with open("/home/jschmolzi/txtFiles/"+name+".txt","r") as file:
         line = file.readline()
         while line:
-            sentences = line.strip().split('.')
+            line = sentenceUtils.clean_up_line(line)
+            sentences = sentenceUtils.split_line(line)
             for sentence in sentences:
                 all_sentences.append(sentence.split())
             line = file.readline()

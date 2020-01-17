@@ -1,4 +1,5 @@
 import logging
+import sentenceUtils
 from gensim.models import Word2Vec
 from gensim.test.utils import get_tmpfile
 
@@ -21,8 +22,8 @@ def main():
         with open("/home/jschmolzi/txtFiles/"+str(i)+".txt","r") as file:
             print("start reading file : "+str(i))
             for line in file:
-                line = line.lower().replace(",","")
-                sentences = line.strip().split('. |! |? |- |; ')
+                line = sentenceUtils.clean_up_line(line)
+                sentences = sentenceUtils.split_line(line)
                 for sentence in sentences:
                     all_sentences.append(sentence.split())
         model.build_vocab(all_sentences,update=True)
@@ -32,7 +33,8 @@ def main():
         with open("/home/jschmolzi/txtFiles/"+str(i)+".txt","r") as file:
             print("start reading file : "+str(i))
             for line in file:
-                sentences = line.strip().split('.')
+                line = sentenceUtils.clean_up_line(line)
+                sentences = sentenceUtils.split_line(line)
                 for sentence in sentences:
                     all_sentences.append(sentence.split())
         model.train(all_sentences,total_examples=len(all_sentences),epochs=model.epochs)
