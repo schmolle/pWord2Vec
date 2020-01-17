@@ -1,4 +1,5 @@
 import logging
+import sentenceUtils
 from gensim.models import Word2Vec
 from gensim.test.utils import get_tmpfile
 
