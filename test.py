@@ -8,8 +8,10 @@ def main():
         word = input("compare word : ")
         result1987 = model1987.most_similar(positive=[word],topn=20)
         result2007 = model2007.most_similar(positive=[word],topn=20)
-        for r1,r2,i in zip(result1987,result2007):
+        i=0
+        for r1,r2 in zip(result1987,result2007):
             print("{} :  {}  |  {}".format(i,r1,r2))
+            i = i+1
             
 if __name__ == '__main__':
     main()
