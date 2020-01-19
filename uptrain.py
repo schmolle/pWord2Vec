@@ -5,7 +5,7 @@ from gensim.test.utils import get_tmpfile
 
 def main():
     for i in range(1987,2008):
-        train_model(i.str())
+        train_model(str(i))
     
 def train_model(name):
     print("training " + name)
