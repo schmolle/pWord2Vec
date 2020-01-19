@@ -4,12 +4,11 @@ from gensim.models import Word2Vec
 from gensim.test.utils import get_tmpfile
 
 def main():
-    print("training 1987 ....")
-    train_model("1987")
-    print("training 2007 ....")
-    train_model("2007")
+    for i in range(1987,2008):
+        train_model(i.str())
     
 def train_model(name):
+    print("training " + name)
     logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
     model = Word2Vec.load("/home/jschmolzi/pModels/all.model")
     all_sentences=[]
