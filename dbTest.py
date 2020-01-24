@@ -7,10 +7,13 @@ def main():
                                   database = "vectordb")
     cursor = connection.cursor()
     selectquery = "select * from words"
-    print(cursor.execute(selectquery))
+    cursor.execute(selectquery)
+    print(cursor.fetchcall())
     insertquery = "insert into words(word) values('success')"
     cursor.execute(insertquery)
-    print(cursor.execute(selectquery))
+    connection.commit()
+    cursor.execute(selectquery)
+    print(cursor.fetchcall())
     cursor.close()
     connection.close()
     
