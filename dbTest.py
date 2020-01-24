@@ -8,12 +8,12 @@ def main():
     cursor = connection.cursor()
     selectquery = "select * from words"
     cursor.execute(selectquery)
-    print(cursor.fetchcall())
+    print(cursor.fetchall())
     insertquery = "insert into words(word) values('success')"
     cursor.execute(insertquery)
     connection.commit()
     cursor.execute(selectquery)
-    print(cursor.fetchcall())
+    print(cursor.fetchall())
     cursor.close()
     connection.close()
     
