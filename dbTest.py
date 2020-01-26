@@ -6,7 +6,7 @@ def main():
     query = "select * from words"
     print(db.fetchFromDb(cursor,query))
     print(db.getIdFromWord(cursor,"apple"))
-    print(db,getWordFromId(cursor,1))
+    print(db.getWordFromId(cursor,1))
     cursor.close()
     connection.close()
     
