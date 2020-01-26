@@ -22,7 +22,7 @@ def getIdFromWord(cursor,word):
 
 def getWordFromId(cursor,id):
     query = ("select word from words where id=(id)",id)
-    return fetchFromDb(cursor, query)
+    return cursor.fetchall()
     
     
     
