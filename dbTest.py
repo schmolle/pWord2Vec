@@ -1,21 +1,11 @@
 import psycopg2
+import dbaccess as db
 
 def main():
-    connection = psycopg2.connect(user = "postgres",
-                                  password ="nYT!3mBEdd",
-                                  host = "localhost",
-                                  database = "vectordb")
-    cursor = connection.cursor()
-    selectquery = "select * from words"
-    cursor.execute(selectquery)
-    print(cursor.fetchall())
-    insertquery = "insert into words(word) values('success')"
-    cursor.execute(insertquery)
-    connection.commit()
-    cursor.execute(selectquery)
-    print(cursor.fetchall())
-    cursor.close()
-    connection.close()
+    connection = db.getConnection()
+    cursor = connection.getCursor()
+    print(db.getIdFromWord(cursor,"apple"))
+    print(db,getWordFromId(cursor,1))
     
 if __name__ == '__main__':
     main()
