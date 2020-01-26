@@ -1,9 +1,8 @@
-import psycopg2
 import dbaccess as db
 
 def main():
     connection = db.getConnection()
-    cursor = connection.getCursor()
+    cursor = connection.cursor()
     print(db.getIdFromWord(cursor,"apple"))
     print(db,getWordFromId(cursor,1))
     
