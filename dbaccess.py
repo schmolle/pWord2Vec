@@ -17,11 +17,11 @@ def commitToDb(connection,cursor,query):
     connection.commit()
 
 def getIdFromWord(cursor,word):
-    query = sql.SQL("select id from words where word = %s"),word
+    query = sql.SQL("select id from words where word = (word)",word)
     return fetchFromDb(cursor, query)
 
 def getWordFromId(cursor,id):
-    query = sql.SQL("select word from words where id = %s",[id])
+    query = sql.SQL("select word from words where id = (id)",id)
     return fetchFromDb(cursor, query)
     
     
