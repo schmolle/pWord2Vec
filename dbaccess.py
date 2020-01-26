@@ -21,7 +21,7 @@ def getIdFromWord(cursor,word):
     return cursor.fetchall()
 
 def getWordFromId(cursor,id):
-    query = sql.SQL("select word from words where id=(id)",id)
+    query = ("select word from words where id=(id)",id)
     return fetchFromDb(cursor, query)
     
     
