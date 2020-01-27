@@ -23,7 +23,24 @@ def insertWord(connection,cursor,word):
                     RETURNING wordId",(word,))
     connection.commit()
     return cursor.fetchall()[0][0]
-    
+
+def insertSetting(connection,cursor,setting):
+    cursor.execute("INSERT INTO settings(setting) VALUES (%s)\
+                    ON CONFLICT (setting) DO UPDATE\
+                    SET setting=excluded.setting\
+                    RETURNING settingsId",(setting,))
+    connection.commit()
+    return cursor.fetchall()[0][0]
+
+def insertVector(connection,cursor,setting,word,year,vector):
+    settingsId = insertSetting(connection,cursor,setting)
+    wordId = insertWord(connection,cursor,word)
+    for idx,value in enumerate(vector):
+        insertVectorValue(connection,cursor,wordId,settingsId,year,dimension,value)
+
+def insertVectorValue(connection,cursor,wordId,settingsId,year,dimension,value):
+    cursor.execute("INSERT INTO vectors(settingsId,wordId,year,dimension,value) VALUES(%s, %s, %s, %s, %s)",
+                   (settingsId, wordId, year, dimension, value, ))
 
 def getIdFromWord(cursor,word):
     cursor.execute("select id from words where word = %s",(word,))

@@ -3,8 +3,9 @@ import dbaccess as db
 def main():
     connection = db.getConnection()
     cursor = connection.cursor()
-    print(db.insertWord(connection,cursor,'apple'))
-    print(db.insertWord(connection,cursor,'apple'))
+    vector=[1.5,2.5,3.3,4.2,21.1]
+    db.insertVector(connection,cursor,'setting2','word2',2007,vector)
+    db.insertVector(connection,cursor,'setting1','word1',2000,vector)
     cursor.close()
     connection.close()
     
