@@ -22,7 +22,7 @@ def insertWord(connection,cursor,word):
                     SET word=excluded.word\
                     RETURNING wordId",(word,))
     connection.commit()
-    return cursor.fetchall()
+    return cursor.fetchall()[0][0]
     
 
 def getIdFromWord(cursor,word):
