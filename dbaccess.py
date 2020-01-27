@@ -36,7 +36,7 @@ def insertVector(connection,cursor,setting,word,year,vector):
     settingsId = insertSetting(connection,cursor,setting)
     wordId = insertWord(connection,cursor,word)
     for idx,value in enumerate(vector):
-        insertVectorValue(connection,cursor,wordId,settingsId,year,dimension,value)
+        insertVectorValue(connection,cursor,wordId,settingsId,year,idx,value)
 
 def insertVectorValue(connection,cursor,wordId,settingsId,year,dimension,value):
     cursor.execute("INSERT INTO vectors(settingsId,wordId,year,dimension,value) VALUES(%s, %s, %s, %s, %s)",
