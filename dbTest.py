@@ -3,8 +3,8 @@ import dbaccess as db
 def main():
     connection = db.getConnection()
     cursor = connection.cursor()
-    print(insertWord(connection,cursor,'apple'))
-    print(insertWord(connection,cursor,'apple'))
+    print(db.insertWord(connection,cursor,'apple'))
+    print(db.insertWord(connection,cursor,'apple'))
     cursor.close()
     connection.close()
     
