@@ -17,9 +17,9 @@ def commitToDb(connection,cursor,query):
     connection.commit()
     
 def insertWord(connection,cursor,word):
-    cursor.execute("INSERT INTO words(word) VALUES (%s) RETURNING wordId",(word,))
+    cursor.execute("INSERT INTO words(word) VALUES (%s) ON CONFLICT DO NOTHING RETURNING wordId",(word,))
     connection.commit()
-    return cursor.fetchall()
+    return cursor.fetchall()[0][0]
     
 
 def getIdFromWord(cursor,word):
