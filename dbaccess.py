@@ -18,7 +18,7 @@ def commitToDb(connection,cursor,query):
     
 def insertWord(connection,cursor,word):
     cursor.execute("INSERT INTO words(word) VALUES (%s)\
-                    ON CONFLICT DO UPDATE\
+                    ON CONFLICT (word) DO UPDATE\
                     SET word=excluded.word\
                     RETURNING wordId",(word,))
     connection.commit()
