@@ -15,6 +15,12 @@ def fetchFromDb(cursor,query):
 def commitToDb(connection,cursor,query):
     cursor.execute(query)
     connection.commit()
+    
+def insertWord(connection,cursor,word):
+    cursor.execute("INSERT INTO words(word) VALUES (%s) RETURNING wordId",(word,))
+    connection.commit()
+    return cursor.fetchall()
+    
 
 def getIdFromWord(cursor,word):
     cursor.execute("select id from words where word = %s",(word,))
