@@ -7,7 +7,7 @@ def main():
     #model2007 = Word2Vec.load("/home/jschmolzi/pModels/2007.model")
     vecs1987 = model1987.wv.vectors
     vocab1987 = model1987.wv.vocab
-    setting = "window5,size100"
+    setting = 'window5,size100'
     connection = db.getConnection()
     cursor = connection.cursor()
     print(db.insertSetting(connection,cursor,setting))

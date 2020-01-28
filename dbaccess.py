@@ -22,11 +22,19 @@ def insertWord(connection,cursor,word):
     connection.commit()
     return "Inserted word %s",(word,)
 
+def getWordId(cursor,word):
+    cursor.execute("SELECT wordId from words WHERE word = %s",(word,))
+    return cursor.fetchall()[0][0]
+
 def insertSetting(connection,cursor,setting):
     cursor.execute("INSERT INTO settings(setting) VALUES (%s)\
                     ON CONFLICT DO NOTHING",(setting,))
     connection.commit()
     return "Inserted Setting %s",(setting,)
+
+def getSettingId(cursor,setting):
+    cursor.execute("SELECT settingsId from settings WHERE setting = %s",(setting,))
+    return cursor.fetchall()[0][0]
 
 def insertVector(connection,cursor,setting,word,year,vector):
     settingsId = getSettingId(connection,cursor,setting)

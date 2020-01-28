@@ -3,8 +3,8 @@ import dbaccess as db
 def main():
     connection = db.getConnection()
     cursor = connection.cursor()
-    vector=[1.5,2.5,3.3,4.2,21.1]
-
+    print(db.getSettingId('abc'))
+    print(db.getWordId('apple'))
     cursor.close()
     connection.close()
     
