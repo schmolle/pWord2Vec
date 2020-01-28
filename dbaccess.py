@@ -18,23 +18,19 @@ def commitToDb(connection,cursor,query):
     
 def insertWord(connection,cursor,word):
     cursor.execute("INSERT INTO words(word) VALUES (%s)\
-                    ON CONFLICT (word) DO UPDATE\
-                    SET word=excluded.word\
-                    RETURNING wordId",(word,))
+                    ON CONFLICT DO NOTHING",(word,))
     connection.commit()
-    return cursor.fetchall()[0][0]
+    return "Inserted word %s",(word,)
 
 def insertSetting(connection,cursor,setting):
     cursor.execute("INSERT INTO settings(setting) VALUES (%s)\
-                    ON CONFLICT (setting) DO UPDATE\
-                    SET setting=excluded.setting\
-                    RETURNING settingsId",(setting,))
+                    ON CONFLICT DO NOTHING",(setting,))
     connection.commit()
-    return cursor.fetchall()[0][0]
+    return "Inserted Setting %s",(setting,)
 
 def insertVector(connection,cursor,setting,word,year,vector):
-    settingsId = insertSetting(connection,cursor,setting)
-    wordId = insertWord(connection,cursor,word)
+    settingsId = getSettingId(connection,cursor,setting)
+    wordId = getWordId(connection,cursor,word)
     for idx,value in enumerate(vector):
         insertVectorValue(connection,cursor,wordId,settingsId,year,idx,value)
     connection.commit()
