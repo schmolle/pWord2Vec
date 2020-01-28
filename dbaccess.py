@@ -37,8 +37,8 @@ def getSettingId(cursor,setting):
     return cursor.fetchall()[0][0]
 
 def insertVector(connection,cursor,setting,word,year,vector):
-    settingsId = getSettingId(connection,cursor,setting)
-    wordId = getWordId(connection,cursor,word)
+    settingsId = getSettingId(cursor,setting)
+    wordId = getWordId(cursor,word)
     for idx,value in enumerate(vector):
         insertVectorValue(connection,cursor,wordId,settingsId,year,idx,value)
     connection.commit()
