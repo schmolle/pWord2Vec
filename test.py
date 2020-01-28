@@ -14,7 +14,7 @@ def main():
             break;
     i=0
     for word in vocab1987:
-        print(vec)
+        print(word)
         i = i+1
         if i >10 :
             break;
