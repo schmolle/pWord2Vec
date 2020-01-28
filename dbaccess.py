@@ -40,7 +40,7 @@ def insertVector(connection,cursor,setting,word,year,vector):
     settingsId = getSettingId(cursor,setting)
     wordId = getWordId(cursor,word)
     for idx,value in enumerate(vector):
-        insertVectorValue(connection,cursor,wordId,settingsId,year,idx,value)
+        insertVectorValue(connection,cursor,wordId,settingsId,year,idx,value.item())
     connection.commit()
 
 def insertVectorValue(connection,cursor,wordId,settingsId,year,dimension,value):
