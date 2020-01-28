@@ -1,6 +1,6 @@
 from gensim.models import Word2Vec
 from gensim.test.utils import get_tmpfile
-import dbaccess
+import dbaccess as db
 
 def main():
     model1987 = Word2Vec.load("/home/jschmolzi/pModels/1987.model")
@@ -13,7 +13,7 @@ def main():
     print(db.insertSetting(connection,cursor,setting))
     for word in vocab1987:
         print(dbaccess.insertWord(connection,cursor,word))
-        dbaccess.insertVector(connection,cursor,setting,word,1987,model1987[word])
+        db.insertVector(connection,cursor,setting,word,1987,model1987[word])
     cursor.close()
     connection.close()
                 
