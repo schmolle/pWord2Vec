@@ -12,7 +12,7 @@ def main():
     cursor = connection.cursor()
     print(db.insertSetting(connection,cursor,setting))
     for word in vocab1987:
-        print(dbaccess.insertWord(connection,cursor,word))
+        print(db.insertWord(connection,cursor,word))
         db.insertVector(connection,cursor,setting,word,1987,model1987[word])
     cursor.close()
     connection.close()
