@@ -13,7 +13,7 @@ def main():
         if i >10 :
             break;
     i=0
-    for word in words1987:
+    for word in vocab1987:
         print(vec)
         i = i+1
         if i >10 :
