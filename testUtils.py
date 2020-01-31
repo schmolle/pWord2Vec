@@ -1,7 +1,7 @@
 import sentenceUtils
 
 def main():
-    line = "HeL,lo; tHi's- is. m\"e? or! not"
+    line = "HeL,l&o; tHi's- is. m\"e? o-r! not:"
     print("Line : " + line)
     line = sentenceUtils.clean_up_line(line)
     print("Line after cleanup : " + line) 
