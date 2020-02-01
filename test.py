@@ -3,7 +3,7 @@ from gensim.test.utils import get_tmpfile
 import dbaccess as db
 
 def main():
-    model0 = Word2Vec.load("/home/jschmolzi/pModels/1987.model")
+    model0 = Word2Vec.load("/home/jschmolzi/pModels/all.model")
     #model2007 = Word2Vec.load("/home/jschmolzi/pModels/2007.model")
     vocab0 = model0.wv.vocab
     setting = 'window5,size100'
