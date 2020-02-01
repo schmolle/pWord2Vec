@@ -15,7 +15,7 @@ def main():
     
     for i in range(1987,2008):
         print(i)
-        model = Word2Vec.load("/home/jschmolzi/pModel/"+str(i)+".model")
+        model = Word2Vec.load("/home/jschmolzi/pModels/"+str(i)+".model")
         vocab = model.wv.vocab
         for word in vocab:
             db.insertVector(connection,cursor,setting,word,i,model[word])
