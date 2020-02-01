@@ -3,8 +3,8 @@ import dbaccess as db
 def main():
     connection = db.getConnection()
     cursor = connection.cursor()
-    print(db.getSettingId(cursor,'abc'))
-    print(db.getWordId(cursor,'apple'))
+    for i in range(1987,2008):
+        print("/home/jschmolzi/pModel/"+str(i)+".model")
     cursor.close()
     connection.close()
     
