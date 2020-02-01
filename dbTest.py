@@ -1,4 +1,6 @@
 import dbaccess as db
+from gensim.models import Word2Vec
+from gensim.test.utils import get_tmpfile
 
 def main():
     model0 = Word2Vec.load("/home/jschmolzi/pModels/all.model")
