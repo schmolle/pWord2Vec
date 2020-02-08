@@ -6,8 +6,10 @@ def main():
     connection = db.getConnection()
     cursor = connection.cursor()
     vec = db.getVector(cursor,6,1987,2224)
-    for val in vec:
-        print(val[0])
+    model = Word2Vec.load("/home/jschmolzi/pModels/1987.model")
+    oVec = model['players']
+    for val,oVal in zip(vec,oVec):
+        print(val[0] , oVal)
     cursor.close()
     connection.close()
     
