@@ -5,7 +5,9 @@ from gensim.test.utils import get_tmpfile
 def main():
     connection = db.getConnection()
     cursor = connection.cursor()
-    print(db.getVector(cursor,6,1987,2224))
+    vec = db.getVector(cursor,6,1987,2224)
+    for val in vec:
+        print(val[0])
     cursor.close()
     connection.close()
     
