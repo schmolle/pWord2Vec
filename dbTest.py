@@ -8,8 +8,10 @@ def main():
     vec = db.getVector(cursor,6,1987,2224)
     model = Word2Vec.load("/home/jschmolzi/pModels/1987.model")
     oVec = model['players']
+    print(vec)
+    print(oVec)
     for val,oVal in zip(vec,oVec):
-        print(val[0] , oVal)
+        print(val , oVal)
     cursor.close()
     connection.close()
     
