@@ -26,7 +26,7 @@ def getVector(cursor,settingsId,year,wordId):
     cursor.execute("SELECT value from vectors WHERE settingsId = %s \
                                               AND year = %s \
                                               AND wordId = %s ",(settingsId, year, wordId))
-    return list(cursor.fetchall())
+    return [i[0] for i in cursor.fetchall()]
 
 def getWordId(cursor,word):
     cursor.execute("SELECT wordId from words WHERE word = %s",(word,))
