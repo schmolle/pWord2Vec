@@ -22,6 +22,12 @@ def insertWord(connection,cursor,word):
     connection.commit()
     return "Inserted word %s" %(word)
 
+def getVector(cursor,settingsId,year,wordId):
+    cursor.execute("SELECT value from vectors WHERE settingsId = %s \
+                                              AND year = %s \
+                                              AND wordId = %s ",(settingsId, year, wordId))
+    return cursor.fetchall()
+
 def getWordId(cursor,word):
     cursor.execute("SELECT wordId from words WHERE word = %s",(word,))
     return cursor.fetchall()[0][0]
