@@ -18,7 +18,7 @@ def main():
     bestId = 0
     bestCosSim = 2
     wordIds = db.getWordIdsFromYear(cursor,6,1987)
-    for wordId in words:
+    for wordId in wordId:
         vec1 = db.getVecotr(cursor,6,1987,wordId)
         vec2 = db.getVecotr(cursor,6,1988,wordId)
         cosSim = numpy.dot(vec1, vec2) / (numpy.linalg.norm(vec1) * numpy.linalg.norm(vec2))
