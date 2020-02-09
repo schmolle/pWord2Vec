@@ -7,14 +7,16 @@ import numpy.linalg
 def main():
     connection = db.getConnection()
     cursor = connection.cursor()
-    vec1 = db.getVector(cursor,6,1987,2224)
-    vec2 = db.getVector(cursor,6,1987,2227)
-    model = Word2Vec.load("/home/jschmolzi/pModels/1987.model")
-    oVec1 = model['players']
-    oVec2 = model['mary']
-    print(model.similarity('players', 'mary'))
-    print(numpy.dot(vec1, vec2) / (numpy.linalg.norm(vec1) * numpy.linalg.norm(vec2)))
-    print(numpy.dot(oVec1, oVec2) / (numpy.linalg.norm(oVec1) * numpy.linalg.norm(oVec2)))
+    #vec1 = db.getVector(cursor,6,1987,2224)
+    #vec2 = db.getVector(cursor,6,1987,2227)
+    #model = Word2Vec.load("/home/jschmolzi/pModels/1987.model")
+    #oVec1 = model['players']
+    #oVec2 = model['mary']
+    #print(model.similarity('players', 'mary'))
+    #print(numpy.dot(vec1, vec2) / (numpy.linalg.norm(vec1) * numpy.linalg.norm(vec2)))
+    #print(numpy.dot(oVec1, oVec2) / (numpy.linalg.norm(oVec1) * numpy.linalg.norm(oVec2)))
+    wordIds = db.getWordIdsFromYear(cursor,6,1987)
+    print(wordIds[:20])
     cursor.close()
     connection.close()
     
