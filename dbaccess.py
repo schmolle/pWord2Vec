@@ -32,7 +32,7 @@ def getWordId(cursor,word):
     cursor.execute("SELECT wordId from words WHERE word = %s",(word,))
     return cursor.fetchall()[0][0]
 
-def getwordsIdsFromYear(cursor, settingsId, year):
+def getWordIdsFromYear(cursor, settingsId, year):
     return cursor.execute("SELECT DISTINCT wordid FROM vectors WHERE settingsid= %s AND year= %s",(settingsId,year))
 
 def insertSetting(connection,cursor,setting):
