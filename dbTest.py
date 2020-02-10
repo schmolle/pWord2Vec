@@ -4,7 +4,6 @@ from gensim.test.utils import get_tmpfile
 import numpy
 import numpy.linalg
 import time
-from _sqlite3 import connect
 
 def main():
     start = time.time()
