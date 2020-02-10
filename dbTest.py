@@ -22,7 +22,7 @@ def main():
     bestId = 0
     bestCosSim = 2
     wordIds = db.getWordIdsFromYear(cursor,6,1987)
-    word = time.time()
+    words = time.time()
     for wordId in wordIds:
         vec1 = db.getVector(cursor,6,1987,wordId)
         vec2 = db.getVector(cursor,6,1988,wordId)
