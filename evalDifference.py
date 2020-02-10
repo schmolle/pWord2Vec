@@ -15,9 +15,9 @@ def evalDifference(start,end):
     connectTime = time.time()
     wordIds = db.getWordIdsFromYear(cursor,6,start)
     wordTime = time.time()
-    len = end - start
-    ids = [0 for i in range(0,len)]
-    cosSims = [2 for i in range(0,len)]
+    leng = end - start
+    ids = [0 for i in range(0,leng)]
+    cosSims = [2 for i in range(0,leng)]
     print(str(ids))
     print(str(cosSims))
     
