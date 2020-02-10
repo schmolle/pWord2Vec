@@ -6,7 +6,7 @@ import numpy.linalg
 import time
 
 def main():
-    evalDifference(2006, 2007)
+    evalDifference(2003, 2007)
     
 def evalDifference(start,end):
     startTime = time.time()
