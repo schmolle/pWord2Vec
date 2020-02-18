@@ -58,13 +58,10 @@ def insertVectorValue(connection,cursor,wordId,settingsId,year,dimension,value):
                     ON CONFLICT DO NOTHING",
                    (settingsId, wordId, year, dimension, value, ))
 
-def getIdFromWord(cursor,word):
-    cursor.execute("select id from words where word = %s",(word,))
-    return cursor.fetchall()
 
 def getWordFromId(cursor,id):
-    cursor.execute("select word from words where id = %s",(id,))
-    return cursor.fetchall()
+    cursor.execute("SELECT word from words WHERE wordiD = %s",(id,))
+    return cursor.fetchall()[0][0]
     
     
     
