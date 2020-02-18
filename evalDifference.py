@@ -6,7 +6,8 @@ import numpy.linalg
 import time
 
 def main():
-    evalDifference(2003, 2007)
+    for i in range(1987,2007):
+        evalDifference(i, i+1)
     
 def evalDifference(start,end):
     startTime = time.time()
@@ -18,8 +19,6 @@ def evalDifference(start,end):
     leng = end - start
     ids = [0 for i in range(0,leng)]
     cosSims = [2 for i in range(0,leng)]
-    print(str(ids))
-    print(str(cosSims))
     
     for wordId in wordIds:
         numberOfVecs = end - start + 1
@@ -39,6 +38,11 @@ def evalDifference(start,end):
             if cosSim < cosSims[j]:
                 ids[j] = wordId
                 cosSims[j] = cosSim
+    print(start," - ",end," :")
+    for i in range(start,end):
+        id=ids[i-start]
+        word = db.getWordFromId(cursor,id)
+        print(word,": ",cosSims[i-start])
     cursor.close()
     connection.close()
     endTime = time.time()
@@ -46,8 +50,6 @@ def evalDifference(start,end):
     print("words: : " , wordTime-connectTime)
     print("eval : " , endTime - wordTime)
     print("full : " , endTime -startTime)
-    print(str(ids))
-    print(str(cosSims))       
         
     
 if __name__ == '__main__':
