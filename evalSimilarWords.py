@@ -24,7 +24,8 @@ def evalSimilarWords(word,year,targetYear):
     connectTime = time.time()
     wordIds = db.getWordIdsFromYear(cursor,6,targetYear)
     wordTime = time.time()
-    vec = db.getVector(cursor,6,year,wordId)
+    word = db.getWordId(word)
+    vec = db.getVector(cursor,6,year,word)
     for wordId in wordIds:
         targetVec = db.getVector(cursor,6,targetYear,wordId)
         sim = evalUtils.cosSim(vec,targetVec)
