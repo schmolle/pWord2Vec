@@ -8,9 +8,9 @@ from uuid import uuid1
 id1 = 0
 id2 = 0
 id3 = 0
-sim1 =1.1 
-sim2 = 1.1
-sim3 =1.1
+sim1 =-1 
+sim2 =-1
+sim3 =-1
    
 def main():
     for i in range(1987,1990):

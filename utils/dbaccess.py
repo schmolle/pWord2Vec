@@ -61,9 +61,7 @@ def insertVectorValue(connection,cursor,wordId,settingsId,year,dimension,value):
 
 def getWordFromId(cursor,id):
     cursor.execute("SELECT word from words WHERE wordid = %s",(id,))
-    x= cursor.fetchall()
-    print(x)
-    return x
+    return cursor.fetchall()[0][0]
     
     
     
