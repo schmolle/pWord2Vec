@@ -3,13 +3,6 @@ from utils import evalUtils
 from gensim.models import Word2Vec
 from gensim.test.utils import get_tmpfile
 import time
-
-global id1
-global id2
-global id3
-global sim1
-global sim2
-global sim3
     
 def main():
     for i in range(1987,1990):
@@ -18,11 +11,17 @@ def main():
         evalSimilarWords(word,year,i)
     
 def evalSimilarWords(word,year,targetYear):
+    global id1
     id1 = 0
+    global id2
     id2 = 0
-    id3 = 0
+    global id3
+    id3 = 0 
+    global sim1
     sim1 =1.1
-    sim2 =1.1
+    global sim2 
+    sim2 = 1.1
+    global sim3
     sim3 =1.1
     startTime = time.time()
     connection = db.getConnection()
