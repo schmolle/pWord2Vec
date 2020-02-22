@@ -30,11 +30,11 @@ def evalSimilarWords(word,year,targetYear):
     for wordId in wordIds:
         targetVec = db.getVector(cursor,6,targetYear,wordId)
         sim = evalUtils.cosSim(vec,targetVec)
-        if sim < sim1:
+        if sim > sim1:
             betterThanSim1(sim, wordId)
-        elif sim < sim2:
+        elif sim > sim2:
             betterThanSim2(sim, wordId)
-        elif sim < sim3:
+        elif sim > sim3:
             betterThanSim3(sim, wordId)
     word1 = word = db.getWordFromId(cursor,id1)
     word2 = word = db.getWordFromId(cursor,id2)
