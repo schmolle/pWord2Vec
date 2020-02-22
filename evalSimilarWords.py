@@ -19,6 +19,7 @@ def main():
         evalSimilarWords(word,year,i)
     
 def evalSimilarWords(word,year,targetYear):
+    reset()
     startTime = time.time()
     connection = db.getConnection()
     cursor = connection.cursor()
@@ -48,6 +49,20 @@ def evalSimilarWords(word,year,targetYear):
     print("words: : " , wordTime-connectTime)
     print("full : " , endTime -startTime)
     
+def reset():
+    global sim3
+    global sim2
+    global sim1
+    global id1
+    global id2
+    global id3
+    id1 = 0
+    id2 = 0
+    id3 = 0
+    sim1 =-1 
+    sim2 =-1
+    sim3 =-1
+
 def betterThanSim1(sim,id):
     global sim3
     global sim2
