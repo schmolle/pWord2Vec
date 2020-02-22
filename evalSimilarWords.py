@@ -4,12 +4,12 @@ from gensim.models import Word2Vec
 from gensim.test.utils import get_tmpfile
 import time
 
-id1
-id2
-id3
-sim1
-sim2
-sim3
+global id1
+global id2
+global id3
+global sim1
+global sim2
+global sim3
     
 def main():
     for i in range(1987,1990):
