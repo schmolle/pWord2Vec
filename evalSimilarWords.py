@@ -36,9 +36,9 @@ def evalSimilarWords(word,year,targetYear):
             betterThanSim2(sim, wordId)
         elif sim > sim3:
             betterThanSim3(sim, wordId)
-    word1 = word = db.getWordFromId(cursor,id1)
-    word2 = word = db.getWordFromId(cursor,id2)
-    word3 = word = db.getWordFromId(cursor,id3)
+    word1 = db.getWordFromId(cursor,id1)
+    word2 = db.getWordFromId(cursor,id2)
+    word3 = db.getWordFromId(cursor,id3)
     cursor.close()
     connection.close()
     print("1 : ", word1 , "sim : ", sim1)
