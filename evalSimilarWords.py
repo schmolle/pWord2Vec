@@ -24,7 +24,7 @@ def evalSimilarWords(word,year,targetYear):
     connectTime = time.time()
     wordIds = db.getWordIdsFromYear(cursor,6,targetYear)
     wordTime = time.time()
-    word = db.getWordId(word)
+    word = db.getWordId(cursor, word)
     vec = db.getVector(cursor,6,year,word)
     for wordId in wordIds:
         targetVec = db.getVector(cursor,6,targetYear,wordId)
