@@ -1,12 +1,11 @@
-import dbaccess as db
+from utils import dbaccess as db
+from utils import evalUtils
 from gensim.models import Word2Vec
 from gensim.test.utils import get_tmpfile
-import numpy
-import numpy.linalg
 import time
 
 def main():
-    for i in range(1987,2007):
+    for i in range(1987,1990):
         evalDifference(i, i+1)
     
 def evalDifference(start,end):
@@ -33,7 +32,7 @@ def evalDifference(start,end):
         for j in range(0,l):
             vec1 = vecs[j]
             vec2 = vecs[j+1]
-            cosSim = numpy.dot(vec1, vec2) / (numpy.linalg.norm(vec1) * numpy.linalg.norm(vec2))
+            cosSim = evalUtils.cosSim(vec1,vec2)
             # compare with current 'best'
             if cosSim < cosSims[j]:
                 ids[j] = wordId
@@ -46,7 +45,6 @@ def evalDifference(start,end):
     cursor.close()
     connection.close()
     endTime = time.time()
-    print("connection : " , connectTime - startTime)
     print("words: : " , wordTime-connectTime)
     print("eval : " , endTime - wordTime)
     print("full : " , endTime -startTime)

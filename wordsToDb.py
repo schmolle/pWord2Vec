@@ -1,8 +1,5 @@
-import dbaccess as db
+from utils import dbaccess as db
 from gensim.models import Word2Vec
-from gensim.test.utils import get_tmpfile
-import numpy
-import numpy.linalg
 import time
 
 def main():

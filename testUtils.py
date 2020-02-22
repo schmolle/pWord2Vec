@@ -1,4 +1,4 @@
-import sentenceUtils
+from utils import sentenceUtils
 
 def main():
     line = "HeL,l&o; tHi's- is. m\"e? o-r! not:"
