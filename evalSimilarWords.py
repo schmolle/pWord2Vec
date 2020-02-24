@@ -15,7 +15,7 @@ sim3 =-1
 def main():
     for i in range(1995,2005):
         word='apple'
-        year=1987
+        year=2007
         evalSimilarWords(word,year,i)
     
 def evalSimilarWords(word,year,targetYear):
