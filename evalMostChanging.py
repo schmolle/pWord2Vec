@@ -6,9 +6,9 @@ import time
 
 def main():
     for i in range(1987,2007):
-        evalDifference(i, i+1)
+        evalDifference(i, i+1,10)
     
-def evalDifference(start,end):
+def evalDifference(start,end,topK):
     startTime = time.time()
     connection = db.getConnection()
     cursor = connection.cursor()
@@ -16,8 +16,7 @@ def evalDifference(start,end):
     wordIds = db.getWordIdsFromYear(cursor,6,start)
     wordTime = time.time()
     leng = end - start
-    ids = [0 for i in range(0,leng)]
-    cosSims = [2 for i in range(0,leng)]
+    dict = initDict(topK)
     
     for wordId in wordIds:
         numberOfVecs = end - start + 1
@@ -29,26 +28,34 @@ def evalDifference(start,end):
             vecs[index] = db.getVector(cursor,6,i,wordId)
         l = len(vecs) -1
         # compute cosSim for each tuple of following years
+        res = 0
         for j in range(0,l):
             vec1 = vecs[j]
             vec2 = vecs[j+1]
             cosSim = evalUtils.cosSim(vec1,vec2)
-            # compare with current 'best'
-            if cosSim < cosSims[j]:
-                ids[j] = wordId
-                cosSims[j] = cosSim
+            res += cosSim
+        for value in dict.values():
+            if res < value:
+                dict.popitem()
+                dict[wordId] = sim
+                dict=OrderedDict(sorted(d.items(), key = itemgetter(1), reverse = False))
+                break
     print(start," - ",end," :")
-    for i in range(start,end):
-        id=ids[i-start]
+    for id,simi in dict.items():
         word = db.getWordFromId(cursor,id)
-        print(word,": ",cosSims[i-start])
+        print(word, " sim : ",simi)
     cursor.close()
     connection.close()
     endTime = time.time()
     print("words: : " , wordTime-connectTime)
     print("eval : " , endTime - wordTime)
     print("full : " , endTime -startTime)
-        
+    
+def initDict(dictLength):
+    d=OrderedDict()
+    for i in range(0,dictLength):
+        d[i]=1
+    return d
     
 if __name__ == '__main__':
     main()
