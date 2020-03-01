@@ -15,7 +15,7 @@ def main():
         year=int(sys.argv[2])
         bestK=int(sys.argv[3])
         targetStartYear=int(sys.argv[4])
-        targetEndYear=int(sys.argv[5] +1) 
+        targetEndYear=int(sys.argv[5]) +1
         for i in range(targetStartYear,targetEndYear):
             evalSimilarWords(word,year,i,bestK)
     
