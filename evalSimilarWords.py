@@ -11,7 +11,7 @@ def main():
         word='apple'
         year=2007
         bestK=6
-        evalSimilarWords(word,year,i)
+        evalSimilarWords(word,year,i,bestK)
     
 def evalSimilarWords(word,year,targetYear,bestK):
     startTime = time.time()
