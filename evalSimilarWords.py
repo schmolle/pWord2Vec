@@ -32,7 +32,7 @@ def evalSimilarWords(word,year,targetYear,bestK):
                 dict[wordId] = sim
                 dict=OrderedDict(sorted(dict.items(), key = itemgetter(1), reverse = True))
                 break
-    for id,simi in dict:
+    for id,simi in dict.items():
         word = db.getWordFromId(cursor,id)
         print(word, " sim : ",simi)
     cursor.close()
