@@ -12,10 +12,10 @@ def main():
         print("usage : cmd word srcYear bestK targetStartYear targetEndYear")
     else:
         word=sys.argv[1]
-        year=sys.argv[2]
-        bestK=sys.argv[3]
-        targetStartYear=sys.argv[4]
-        targetEndYear=sys.argv[5] +1 
+        year=int(sys.argv[2])
+        bestK=int(sys.argv[3])
+        targetStartYear=int(sys.argv[4])
+        targetEndYear=int(sys.argv[5] +1) 
         for i in range(targetStartYear,targetEndYear):
             evalSimilarWords(word,year,i,bestK)
     
