@@ -5,15 +5,21 @@ from gensim.test.utils import get_tmpfile
 import time
 from collections import OrderedDict
 from operator import itemgetter 
-   
+import sys
+
 def main():
-    for i in range(1995,2005):
-        word='apple'
-        year=2007
-        bestK=6
+    if len(sys.argv) != 6:
+        print("usage : cmd word srcYear bestK targetStartYear targetEndYear")
+    word=sys.argv[1]
+    year=sys.argv[2]
+    bestK=sys.argv[3]
+    targetStartYear=sys.argv[4]
+    targetEndYear=sys.argv[5] +1 
+    for i in range(targetStartYear,targetEndYear):
         evalSimilarWords(word,year,i,bestK)
     
 def evalSimilarWords(word,year,targetYear,bestK):
+    print("year : " , targetYear)
     startTime = time.time()
     connection = db.getConnection()
     cursor = connection.cursor()
