@@ -5,7 +5,7 @@ from gensim.test.utils import get_tmpfile
 import time
 
 def main():
-    for i in range(1987,1990):
+    for i in range(1987,2007):
         evalDifference(i, i+1)
     
 def evalDifference(start,end):

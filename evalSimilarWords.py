@@ -3,23 +3,17 @@ from utils import evalUtils
 from gensim.models import Word2Vec
 from gensim.test.utils import get_tmpfile
 import time
-from uuid import uuid1
-    
-id1 = 0
-id2 = 0
-id3 = 0
-sim1 =-1 
-sim2 =-1
-sim3 =-1
+from collections import OrderedDict
+from operator import itemgetter 
    
 def main():
     for i in range(1995,2005):
         word='apple'
         year=2007
+        bestK=6
         evalSimilarWords(word,year,i)
     
-def evalSimilarWords(word,year,targetYear):
-    reset()
+def evalSimilarWords(word,year,targetYear,bestK):
     startTime = time.time()
     connection = db.getConnection()
     cursor = connection.cursor()
@@ -28,70 +22,31 @@ def evalSimilarWords(word,year,targetYear):
     wordTime = time.time()
     word = db.getWordId(cursor, word)
     vec = db.getVector(cursor,6,year,word)
+    dict = initDict(bestK)
     for wordId in wordIds:
         targetVec = db.getVector(cursor,6,targetYear,wordId)
         sim = evalUtils.cosSim(vec,targetVec)
-        if sim > sim1:
-            betterThanSim1(sim, wordId)
-        elif sim > sim2:
-            betterThanSim2(sim, wordId)
-        elif sim > sim3:
-            betterThanSim3(sim, wordId)
-    word1 = db.getWordFromId(cursor,id1)
-    word2 = db.getWordFromId(cursor,id2)
-    word3 = db.getWordFromId(cursor,id3)
+        for value in dict.values():
+            if sim > value:
+                dict.popitem()
+                dict[wordId] = sim
+                dict=OrderedDict(sorted(d.items(), key = itemgetter(1), reverse = True))
+                break
+    for id,simi in dict:
+        word = db.getWordFromId(cursor,id)
+        print(word, " sim : ",simi)
     cursor.close()
     connection.close()
-    print("1 : ", word1 , "sim : ", sim1)
-    print("2 : ", word2 , "sim : ", sim2)
-    print("3 : ", word3 , "sim : ", sim3)
     endTime = time.time()
     print("words: : " , wordTime-connectTime)
     print("full : " , endTime -startTime)
-    
-def reset():
-    global sim3
-    global sim2
-    global sim1
-    global id1
-    global id2
-    global id3
-    id1 = 0
-    id2 = 0
-    id3 = 0
-    sim1 =-1 
-    sim2 =-1
-    sim3 =-1
 
-def betterThanSim1(sim,id):
-    global sim3
-    global sim2
-    global sim1
-    global id1
-    global id2
-    global id3
-    sim3=sim2
-    id3=id2
-    sim2=sim1
-    id2=id1
-    id1=id
-    sim1=sim
-
-def betterThanSim2(sim,id):
-    global sim3
-    global sim2
-    global id2
-    global id3
-    sim3=sim2
-    id3=id2
-    id2=id
-    sim2=sim
-    
-def betterThanSim3(sim,id):
-    global sim3
-    global id3
-    sim3=sim
-    id3=id
+def initDict(dictLength):
+    d=OrderedDict()
+    for i in range(0,dictLength):
+        d[i]=-1
+    return d
+        
         
 if __name__ == '__main__':
     main()

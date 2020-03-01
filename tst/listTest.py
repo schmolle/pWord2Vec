@@ -1,15 +1,18 @@
+from collections import OrderedDict
+from operator import itemgetter 
+
 def main():
-    #fullList = testList(1,3)
-    #print(str(fullList))
-    #l = len(fullList) -1
-    #for i,subList in enumerate(fullList):
-    #    print("current : " , str(subList))
-    #    if(i < l):
-    #        print("next : ",str(fullList[i+1]) )
-    start = 1987
-    end = 1989
-    arr=[0 for i in range(0,end-start)]
-    print(str(arr))
+    d=initDict(5)
+    print(d)
+    sim =1 
+    wordId=99
+    for value in d.values():
+            if sim > value:
+                d.popitem()
+                d[wordId] = sim
+                d=OrderedDict(sorted(d.items(), key = itemgetter(1), reverse = True))
+                break
+    print(d)
     
 def testList(start,end):
     number = end - start + 1
@@ -19,7 +22,11 @@ def testList(start,end):
         arr[index] = [1+i,2+i,3+i]
     return arr
     
-    
+def initDict(dictLength):
+    d=OrderedDict()
+    for i in range(0,dictLength):
+        d[i]=-1
+    return d
     
 if __name__ == '__main__':
     main()
