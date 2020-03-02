@@ -46,7 +46,7 @@ def evalMostChanging(start,end,topK):
             if res < value:
                 dict.popitem()
                 dict[wordId] = res
-                dict=OrderedDict(sorted(d.items(), key = itemgetter(1), reverse = False))
+                dict=OrderedDict(sorted(dict.items(), key = itemgetter(1), reverse = False))
                 break
     print(start," - ",end," :")
     for id,simi in dict.items():
