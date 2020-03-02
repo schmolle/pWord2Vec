@@ -12,7 +12,7 @@ def main():
         bestK=int(sys.argv[1])
         targetStartYear=int(sys.argv[2])
         targetEndYear=int(sys.argv[3])
-        evalMostChanging(word,year,i,bestK)
+        evalMostChanging(targetStartYear, targetEndYear, bestK)
     
 def evalMostChanging(start,end,topK):
     startTime = time.time()
