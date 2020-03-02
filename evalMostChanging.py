@@ -3,12 +3,18 @@ from utils import evalUtils
 from gensim.models import Word2Vec
 from gensim.test.utils import get_tmpfile
 import time
+import sys
 
 def main():
-    for i in range(1987,2007):
-        evalDifference(i, i+1,10)
+    if len(sys.argv) != 4:
+        print("usage : cmd bestK targetStartYear targetEndYear")
+    else:
+        bestK=int(sys.argv[1])
+        targetStartYear=int(sys.argv[2])
+        targetEndYear=int(sys.argv[3])
+        evalMostChanging(word,year,i,bestK)
     
-def evalDifference(start,end,topK):
+def evalMostChanging(start,end,topK):
     startTime = time.time()
     connection = db.getConnection()
     cursor = connection.cursor()
