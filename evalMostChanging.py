@@ -4,6 +4,8 @@ from gensim.models import Word2Vec
 from gensim.test.utils import get_tmpfile
 import time
 import sys
+from collections import OrderedDict
+from operator import itemgetter 
 
 def main():
     if len(sys.argv) != 4:
