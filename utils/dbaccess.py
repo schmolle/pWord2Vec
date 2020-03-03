@@ -25,7 +25,8 @@ def insertWord(connection,cursor,word):
 def getVector(cursor,settingsId,year,wordId):
     cursor.execute("SELECT value from vectors WHERE settingsId = %s \
                                               AND year = %s \
-                                              AND wordId = %s ",(settingsId, year, wordId))
+                                              AND wordId = %s \
+                                              ORDER BY dimension",(settingsId, year, wordId))
     return [i[0] for i in cursor.fetchall()]
 
 def getWordId(cursor,word):
