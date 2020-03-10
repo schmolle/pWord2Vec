@@ -62,7 +62,7 @@ def evalMostChanging(start,end,topK):
 def initDict(dictLength):
     d=OrderedDict()
     for i in range(0,dictLength):
-        d[i]=1
+        d[i]=25
     return d
     
 if __name__ == '__main__':
