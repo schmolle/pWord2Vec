@@ -46,10 +46,11 @@ def evalLeastChanging(start,end,topK):
             if res > value:
                 dict.popitem()
                 dict[wordId] = res
-                dict=OrderedDict(sorted(dict.items(), key = itemgetter(1), reverse = False))
+                dict=OrderedDict(sorted(dict.items(), key = itemgetter(1), reverse = True))
                 break
     print(start," - ",end," :")
     for id,simi in dict.items():
+        print(id)
         word = db.getWordFromId(cursor,id)
         print(word, " sim : ",simi)
     cursor.close()
