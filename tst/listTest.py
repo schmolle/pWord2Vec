@@ -2,17 +2,12 @@ from collections import OrderedDict
 from operator import itemgetter 
 
 def main():
-    d=initDict(5)
-    print(d)
-    sim =1 
-    wordId=99
-    for value in d.values():
-            if sim > value:
-                d.popitem()
-                d[wordId] = sim
-                d=OrderedDict(sorted(d.items(), key = itemgetter(1), reverse = True))
-                break
-    print(d)
+    lst2 = []
+    lst = [1,2,3]
+    lst2.append(lst)
+    lst2.append(lst)
+    lst2.append(lst)
+    print(lst2)
     
 def testList(start,end):
     number = end - start + 1
