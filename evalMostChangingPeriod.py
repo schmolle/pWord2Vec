@@ -21,6 +21,7 @@ def evalMostChangingPeriod(topK, nrOfYears, word):
     connection = db.getConnection()
     cursor = connection.cursor()
     vecs = []
+    dict = initDict(topK)
     wordId = db.getWordId(cursor, word)
     for i in range(1987, 2008):
         vec = db.getVector(cursor,6,i,wordId)
