@@ -43,7 +43,7 @@ def evalMostChangingPeriod(topK, nrOfYears, word):
                 break
     
     for year,sim in dict.items():
-        print("From %d to %d : %f" % yeah, year+ nrOfYears, sim)
+        print("From %d to %d : %f" % year, year+ nrOfYears, sim)
     
 def initDict(dictLength):
     d=OrderedDict()
