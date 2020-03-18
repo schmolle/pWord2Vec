@@ -38,12 +38,12 @@ def evalMostChangingPeriod(topK, nrOfYears, word):
         for value in dict.values():
             if res < value:
                 dict.popitem()
-                dict[wordId] = res
+                dict[i] = res
                 dict=OrderedDict(sorted(dict.items(), key = itemgetter(1), reverse = False))
                 break
     
     for year,sim in dict.items():
-        print("From %d to %d : %d" % yeah, year+ nrOfYears, sim)
+        print("From %d to %d : %f" % yeah, year+ nrOfYears, sim)
     
 def initDict(dictLength):
     d=OrderedDict()
