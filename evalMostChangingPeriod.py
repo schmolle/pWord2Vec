@@ -32,11 +32,11 @@ def evalMostChangingPeriod(topK, nrOfYears, word):
         res = 0
         for j in range(0, nrOfYears-1):
             vec1 = vecs[indx + j]
-            vec2 = vec[indx + j + 1] 
+            vec2 = vecs[indx + j + 1] 
             cosSim = evalUtils.cosSim(vec1,vec2)
             res += cosSim
-        for value in dict.values():
-            if res < value:
+        for val in dict.values():
+            if res < val:
                 dict.popitem()
                 dict[i] = res
                 dict=OrderedDict(sorted(dict.items(), key = itemgetter(1), reverse = False))
