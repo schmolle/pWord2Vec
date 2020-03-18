@@ -14,7 +14,7 @@ def main():
         bestK = int(sys.argv[1])
         nrOfYears = int(sys.argv[2])
         word = sys.argv[3]
-        evalMostChangingPeriod(topK, nrOfYears, word)
+        evalMostChangingPeriod(bestK, nrOfYears, word)
     
 def evalMostChangingPeriod(topK, nrOfYears, word):
     startTime = time.time()
