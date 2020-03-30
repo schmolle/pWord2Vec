@@ -24,9 +24,9 @@ def evalLeastChanging(start,end,topK):
     leng = end - start
     dict = initDict(topK)
     nrOfUnchanged  = 0
+    numberOfVecs = end - start + 1
     maxVal = 0.9 * (numberOfVecs-1)
     print(maxVal)
-    numberOfVecs = end - start + 1
     for wordId in wordIds:
         # init vec array
         vecs = [[] for i in range(numberOfVecs)]
