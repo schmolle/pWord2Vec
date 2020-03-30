@@ -36,6 +36,7 @@ def evalLeastChanging(start,end,topK):
         # compute cosSim for each tuple of following years
         res = 0
         maxVal = 0.99 * (numberOfVecs-1)
+        print(maxval)
         nrOfUnchanged  = 0
         for j in range(0,l):
             vec1 = vecs[j]
