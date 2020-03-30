@@ -23,7 +23,8 @@ def evalLeastChanging(start,end,topK):
     wordIds = db.getWordIdsFromYear(cursor,6,start)
     leng = end - start
     dict = initDict(topK)
-    
+    nrOfUnchanged  = 0
+
     for wordId in wordIds:
         numberOfVecs = end - start + 1
         # init vec array
@@ -37,7 +38,6 @@ def evalLeastChanging(start,end,topK):
         res = 0
         maxVal = 0.99 * (numberOfVecs-1)
         print(maxVal)
-        nrOfUnchanged  = 0
         for j in range(0,l):
             vec1 = vecs[j]
             vec2 = vecs[j+1]
@@ -57,6 +57,7 @@ def evalLeastChanging(start,end,topK):
         word = db.getWordFromId(cursor,id)
         print(word, " sim : ",simi)
     print(nrOfUnchanged, " words didnt change")
+    print(len(wordIds)," words found")
     cursor.close()
     connection.close()
     endTime = time.time()
