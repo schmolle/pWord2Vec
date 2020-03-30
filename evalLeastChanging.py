@@ -24,9 +24,10 @@ def evalLeastChanging(start,end,topK):
     leng = end - start
     dict = initDict(topK)
     nrOfUnchanged  = 0
-
+    maxVal = 0.9 * (numberOfVecs-1)
+    print(maxVal)
+    numberOfVecs = end - start + 1
     for wordId in wordIds:
-        numberOfVecs = end - start + 1
         # init vec array
         vecs = [[] for i in range(numberOfVecs)]
         # fill vec array
@@ -36,8 +37,6 @@ def evalLeastChanging(start,end,topK):
         l = len(vecs) -1
         # compute cosSim for each tuple of following years
         res = 0
-        maxVal = 0.99 * (numberOfVecs-1)
-        print(maxVal)
         for j in range(0,l):
             vec1 = vecs[j]
             vec2 = vecs[j+1]
