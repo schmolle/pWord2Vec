@@ -20,9 +20,7 @@ def evalLeastChanging(start,end,topK):
     startTime = time.time()
     connection = db.getConnection()
     cursor = connection.cursor()
-    connectTime = time.time()
     wordIds = db.getWordIdsFromYear(cursor,6,start)
-    wordTime = time.time()
     leng = end - start
     dict = initDict(topK)
     
@@ -37,11 +35,15 @@ def evalLeastChanging(start,end,topK):
         l = len(vecs) -1
         # compute cosSim for each tuple of following years
         res = 0
+        maxVal = 0.99 * (numberOfVecs-1)
+        nrOfUnchanged  = 0
         for j in range(0,l):
             vec1 = vecs[j]
             vec2 = vecs[j+1]
             cosSim = evalUtils.cosSim(vec1,vec2)
             res += cosSim
+            if res > maxVal:
+                nrOfUnchanged = nrOfUnchanged +1
         for value in dict.values():
             if res > value:
                 dict.popitem()
@@ -53,11 +55,10 @@ def evalLeastChanging(start,end,topK):
         print(id)
         word = db.getWordFromId(cursor,id)
         print(word, " sim : ",simi)
+    print(nrOfUnchanged, " words didnt change")
     cursor.close()
     connection.close()
     endTime = time.time()
-    print("words: : " , wordTime-connectTime)
-    print("eval : " , endTime - wordTime)
     print("full : " , endTime -startTime)
     
 def initDict(dictLength):
