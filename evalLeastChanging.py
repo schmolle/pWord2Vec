@@ -26,7 +26,6 @@ def evalLeastChanging(start,end,topK):
     nrOfUnchanged  = 0
     numberOfVecs = end - start + 1
     maxVal = 0.9 * (numberOfVecs-1)
-    print(maxVal)
     for wordId in wordIds:
         # init vec array
         vecs = [[] for i in range(numberOfVecs)]
@@ -42,8 +41,8 @@ def evalLeastChanging(start,end,topK):
             vec2 = vecs[j+1]
             cosSim = evalUtils.cosSim(vec1,vec2)
             res += cosSim
-            if res > maxVal:
-                nrOfUnchanged = nrOfUnchanged +1
+        if res > maxVal:
+            nrOfUnchanged = nrOfUnchanged +1
         for value in dict.values():
             if res > value:
                 dict.popitem()
@@ -52,7 +51,6 @@ def evalLeastChanging(start,end,topK):
                 break
     print(start," - ",end," :")
     for id,simi in dict.items():
-        print(id)
         word = db.getWordFromId(cursor,id)
         print(word, " sim : ",simi)
     print(nrOfUnchanged, " words didnt change")
